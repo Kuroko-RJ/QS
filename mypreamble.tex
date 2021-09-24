@@ -1,0 +1,100 @@
+\usepackage[UTF8]{ctex}
+\usepackage[a4paper,scale=.7]{geometry}
+\usepackage{amsmath,amsfonts,mathrsfs,amssymb,ntheorem,extarrows,graphicx,enumerate,braket,mathtools,xcolor,listings,syntonly}
+%\usepackage{showlabels}
+
+
+%\numberwithin{equation}{section}
+
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}}
+\newcommand*\bd{\mathop{}\!\text{\dj}}
+
+\newcommand\der[1]{\frac{\diff}{\diff #1}}
+\newcommand*\Der[2]{\frac{\diff #1}{\diff #2}}
+\newcommand\nder[2]{\frac{{\diff}^#1}{{\diff #2}^#1}}
+\newcommand*\nDer[3]{\frac{{\diff}^#1 #2}{{\diff #3}^#1}}
+\newcommand\parder[1]{\frac{\partial}{\partial #1}}
+\newcommand*\parDer[2]{\frac{\partial #1}{\partial #2}}
+\newcommand\nparder[2]{\frac{\partial^#1}{{\partial #2}^#1}}
+\newcommand*\nparDer[3]{\frac{\partial^#1#2}{{\partial #3}^#1}}%定义导数的快捷输入
+
+\renewcommand*\geq\geqslant
+\renewcommand*\leq\leqslant
+\renewcommand*\ge\geqslant
+\renewcommand*\le\leqslant
+
+\renewcommand*\phi\varphi
+\renewcommand*\epsilon\varepsilon
+\renewcommand*\deg{^\circ}
+
+\renewcommand*{\(}{\left(}
+\renewcommand*{\)}{\right)}
+
+\newcommand\equs[1]{\left\{\, #1\right.}
+
+\newcommand*\ee{\mathrm{e}}
+\newcommand*\ii{\mathrm{i}}
+\newcommand*\vXi{\varXi}
+
+\newcommand\vcbd[1]{\boldsymbol{#1}}
+
+\newcommand*\unit[1]{\,\mathrm{#1}}
+\newcommand*\e[1]{\times 10^{#1}}
+\newcommand*\myemph[2]{\emph{#1}(\emph{#2})}
+
+\newcommand*\taghere{\refstepcounter{equation}\tag{\theequation}}
+
+\newcommand*\xde{Schrödinger}
+\newcommand*\xdefc{\xde 方程}
+\newcommand*\dbly{de Broglie}
+\newcommand\expe[1]{\left\langle #1 \right\rangle}
+
+\newcommand*\operaise{\hat{a}_+}
+\newcommand*\opelower{\hat{a}_-}
+\newcommand*\opeladder{\hat{a}_\pm}
+\newcommand*\commutator[2]{\left[\hat{#1},\hat{#2}\right]}
+\newcommand*\ope[1]{\hat{#1}}
+\newcommand*\opeadj[1]{\hat{#1}^\dag}
+
+\newcommand*\ex{\vcbd{e_x}}
+\newcommand*\ey{\vcbd{e_y}}
+\newcommand*\ez{\vcbd{e_z}}
+\newcommand*\er{\vcbd{e_r}}
+\newcommand*\etheta{\vcbd{e_\theta}}
+\newcommand*\ephi{\vcbd{e_\phi}}
+
+\newcommand*\hilbert{\mathcal{H}}
+
+\newtheorem*{props}{命题}
+{
+	\theorembodyfont{\normalfont}
+	\newtheorem{exam}{例}
+}
+{
+\theoremstyle{plain}
+\newtheorem{exer}{}
+}
+{
+\theoremstyle{nonumberplain}
+\theorembodyfont{\normalfont}
+\newtheorem{ans}{解:}
+}
+{
+	\theoremstyle{nonumberplain}
+	\theorembodyfont{\normalfont}
+	\newtheorem{proof}{证:}
+}
+
+\lstset{
+	basicstyle          =   \sffamily,          % 基本代码风格
+	keywordstyle        =   \bfseries,          % 关键字风格
+	flexiblecolumns,                % 别问为什么，加上这个
+	numbers             =   left,   % 行号的位置在左边
+	showspaces          =   false,  % 是否显示空格，显示了有点乱，所以不现实了
+	numberstyle         =   \ttfamily,    % 行号的样式，小五号，tt等宽字体
+	showstringspaces    =   false,
+	frame               =   lrtb,   % 显示边框
+	breaklines			=	true,
+	backgroundcolor=\color{black!5},
+}%定义代码抄录环境
