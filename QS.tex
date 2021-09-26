@@ -1,24 +1,24 @@
-\documentclass[draft]{article}
+\documentclass[]{article}
 
 \input{mypreamble}
 
 \DeclareMathOperator{\li}{Li}
 
-\title{abc}
+\title{统计物理随笔}
 \author{龍翔九州}
 \date{\today}
 
 \begin{document}
 	\maketitle
 	\section{理想气体的统计分布}
-	本文主要考虑玻色气体和费米气体的统计性质。在自由气体近似下构成气体的玻色子 及费米子的能级与经典理想气体并没有什么区别，它们的统计特性主要来自于多个玻色子 或费米子带来的全同粒子效应以及泡利不相容原理。我们首先考虑单个粒子的能级，将粒子近似为在体积$ V $的范围内运动，当$ V\gg \lambda^3 $的时候能级视为准连续，其中$ \lambda=2\pi\hbar/p $是粒子的德布罗意波长，那么粒子的能级$E=p^2/2m$. 粒子在能级$ E $附近的态密度$ g(E) $为\footnote{\eqref{first}式中分子的$4\pi p^2\diff p$代表$ \vcbd{p}- $空间中能量为$ E $至$ E+\diff E $的区域所占据的球壳体积，自然有$ E=p^2/2m $及$ \diff E=p\diff p/m $。分母的$ (2\pi\hbar)^3/V $代表每个$ \vcbd{p} $态所占据的体积，两个体积相除就得到了$ E $至$ E+\diff E $范围内的量子态数目。}
+	这几章主要考虑玻色气体和费米气体的统计性质。在自由气体近似下构成气体的玻色子 及费米子的能级与经典理想气体并没有什么区别，它们的统计特性主要来自于多个玻色子 或费米子带来的全同粒子效应以及泡利不相容原理。我们首先考虑单个粒子的能级，将粒子近似为在体积$ V $的范围内运动，能级近似能级视为准连续是粒子的德布罗意波长，那么粒子的能级$E=p^2/2m$. 粒子在能级$ E $附近的态密度$ g(E) $为\footnote{\eqref{first}式中分子的$4\pi p^2\diff p$代表$ \vcbd{p}- $空间中能量为$ E $至$ E+\diff E $的区域所占据的球壳体积，自然有$ E=p^2/2m $及$ \diff E=p\diff p/m $。分母的$ (2\pi\hbar)^3/V $代表每个$ \vcbd{p} $态所占据的体积，两个体积相除就得到了$ E $至$ E+\diff E $范围内的量子态数目。}
 	\[\label{first}g(E)\diff E=\frac{4\pi p^2\diff p}{(2\pi\hbar)^2/V}\times g=g\frac{V}{\sqrt{2}\pi^2\hbar^3}m^{\frac 32}\sqrt E\diff E\taghere\]
 	常数$ g $代表由于粒子自旋引入的简并度。式\eqref{first}即
 	\[\label{DensityOfState}g(E)=g\frac{m^{\frac 32}V}{\sqrt{2}\pi^2\hbar^3}\sqrt E\taghere\]
 	若能知道粒子在能级上的分布$ f(E) $, 即能级$ E $上量子态被粒子实际占据的比例，就能得到气体的热力学性质，例如
 	\begin{subequations}\label{StatisticalQuantity}
 		\begin{align}
-			N&=\int_0^\infty f(E)g(E)\diff E\\
+			\label{3a}N&=\int_0^\infty f(E)g(E)\diff E\\
 			U&=\int_0^\infty Ef(E)g(E)\diff E
 		\end{align}
 	\end{subequations}
@@ -29,7 +29,7 @@
 		\[\label{FermiDistribution}f_{\text{Fermi}}(E)=\frac{1}{\ee^{\frac{E-\mu}{kT}}+1}\taghere\]
 	\end{subequations}
 	式\eqref{Distribution}的推导教材上已经详细写出，不再重复。
-	\section{玻色气体}
+	\section{玻色气体}\label{sec:2}
 	现在理想气体的统计理论框架已经搭好了，只要把式\eqref{DensityOfState}和\eqref{BoseDistribution}哐哐往\eqref{StatisticalQuantity}里代就完成了……本应如此，我们先实际代入一下。玻色子自旋假设为0，这样就没有自旋带来的简并:
 	\[\label{5}N=\frac{m^{\frac 32}V}{\sqrt{2}\pi^2\hbar^3}\int_0^\infty\frac{\sqrt{E}\diff E}{\ee^{(E-\mu)/kT}-1}\taghere\]
 	作换元$ E\to kTx $,引入参数$ z=\ee^{\mu/kT} $，那么
@@ -42,7 +42,8 @@
 	\begin{figure}[h]
 		\includegraphics[width=\linewidth]{fig1}\label{fig1}
 	\end{figure}
-
+	蓝线就是我们要用到的$ h_\nu(z) $,黄线为讨论费米分布时需要用到的另一个函数$ g_\nu(z) $, 这里一并画出。
+	
 	我们发现$ h_\nu(z) $只有在$ z\le 1 $的时候有定义，在$ z>1 $的时候不仅级数\eqref{series}发散至$ \infty $，积分\eqref{int}本身也发散。并且按照级数\eqref{series}有
 	\[h_\nu(1)=\sum_{n=1}^{\infty}\frac{1}{n^\nu}=\zeta(\nu)\taghere\]
 	$ \zeta(\nu) $是另一个特殊函数，没别的了。对于玻色子来说我们只需要关心$ z>0 $的情况，毕竟$ \ee^{\mu/kT}>0 $.但是对于费米子我们会涉及到另一个积分
@@ -73,8 +74,8 @@
 	\[U=\frac{3\zeta(5/2)}{2\zeta(3/2)}NkT\left(\frac{T}{T_C}\right)^{\frac 32}\approx0.770NkT\left(\frac{T}{T_C}\right)^{\frac 32}\taghere\]
 	此时玻色气体的热容
 	\[C_V=\parDer UT=\frac{5U}{2T}\taghere\]
-	$ T_C $表征了玻色气体发生玻色-爱因斯坦凝聚的临界温度，在玻色子系统里$ T_C $往往远低于常温。例如Anderseon等人曾经对$ ^{87}\text{Rb} $原子降温，直到170nK才首次观察到$ ^{87}\text{Rb} $原子系统的玻色-爱因斯坦凝聚现象\footnote{Anderson, M. H., Ensher, J. R., Matthews, M. R., Wieman, C. E., and Cornell, E. A. (1995). Observation of Bose–Einstein condensation in a dilute atomic vapor. Science, 269, 198.}。在常温下$ T\gg T_C $, 在高温近似下玻色气体逐渐体现出经典统计特性。具体来说，在$ T>T_C $时仍有
-	\[\label{18}h_{\frac 32}(z)=\frac NV\left(\frac{2\pi\hbar^2}{mkT}\right)^{\frac 32}=\zeta\left(\frac{T_C}{T}\right)^{\frac 32}\taghere\]
+	$ T_C $表征了玻色气体发生玻色-爱因斯坦凝聚的临界温度，在玻色子系统里$ T_C $往往远低于常温。例如Anderseon等人曾经对$ ^{87}\text{Rb} $原子降温，直到170nK才开始观察到$ ^{87}\text{Rb} $原子系统的玻色-爱因斯坦凝聚现象\footnote{Anderson, M. H., Ensher, J. R., Matthews, M. R., Wieman, C. E., and Cornell, E. A. (1995). Observation of Bose–Einstein condensation in a dilute atomic vapor. Science, 269, 198.}。在常温下$ T\gg T_C $, 在高温近似下玻色气体逐渐体现出经典统计特性。具体来说，在$ T>T_C $时仍有
+	\[\label{18}h_{\frac 32}(z)=\frac NV\left(\frac{2\pi\hbar^2}{mkT}\right)^{\frac 32}=\zeta\left(\frac 32\right)\left(\frac{T_C}{T}\right)^{\frac 32}\taghere\]
 	式\eqref{18}右侧在高温下接近0，依级数表达式\eqref{series}有近似$ h_{\nu}(z)\sim z $，因此
 	\[\mu=kT\ln\left[\frac NV\left(\frac{2\pi\hbar^2}{mkT}\right)^{\frac 32}\right]\sim-\frac 32kT\ln T\taghere\]
 	因而玻色气体内能
@@ -102,7 +103,7 @@
 	\end{align}\end{subequations}
 	其中
 	\[g_\nu(z):=\int_0^\infty\frac{x^{\nu-1}}{z^{-1}\ee^x+1}\diff x=-h_\nu(-z)\]
-	之前图中黄色曲线即是$ g_\nu(z) $的图象。下图画出了不同$ \nu $值下$ g_\nu(z) $的图象。$ \nu $越大$ h_\nu(z) $也越大，曲线远离$ x $轴。
+	\ref{sec:2}节图中黄色曲线即是$ g_\nu(z) $的图象。下图画出了不同$ \nu $值下$ g_\nu(z) $的图象，可见$ \nu $越大$ h_\nu(z) $也越大，曲线远离$ x $轴。
 	\begin{figure}[h]
 		\includegraphics[width=\linewidth]{fig2}
 	\end{figure}
@@ -116,7 +117,7 @@
 	也就是说
 	\[\label{28}\mu(T)=kT\ln z\approx\frac{\hbar^2}{2m}\left(3\pi^2\frac NV\right)^{\frac 23}\taghere\]
 	\eqref{28}式是$ T\to 0 $时对$ \mu $的最低阶近似，表明$ T\to 0 $时费米气体的化学势趋于一定值，定义\emph{费米能级}
-	\[\mu(0):=\frac{\hbar^2}{2m}\left(3\pi^2\frac NV\right)^{\frac 23}\taghere\]
+	\[\label{29}\mu(0):=\frac{\hbar^2}{2m}\left(3\pi^2\frac NV\right)^{\frac 23}\taghere\]
 	为$ T=0 $时的化学势。费米能级的概念稍后还会涉及。利用费米能级$ \mu(0) $将\eqref{25}改写为
 	\[\label{25'}g_{\frac 32}(z)=\frac{4}{3\sqrt{\pi}}\left(
 	\frac{\mu(0)}{kT}\right)^{\frac 32}\tag{\ref{25}$ ' $}\]
@@ -143,7 +144,46 @@
 	\frac{U}{NkT}&=\frac 32\frac{g_{5/2}(z)}{g_{3/2}(z)}\approx\frac 32\times\frac 25\frac{\mu(0)}{kT}\left(1+\frac{5\pi^2}{12}\left(\frac{kT}{\mu(0)}\right)^2\right)
 	\end{align*}
 	也就是说
-	\[\label{FeimiGasEnergy}U=\frac 35N\mu(0)+\frac{\pi^2}{4}\frac{N}{\mu(0)}(kT)^2\taghere\]
-	内能\eqref{FeimiGasEnergy}右侧第一项为常数，是由于泡利不相容原理带来的内禀能量。第二项正比于$ T^2 $，因此可以得到低温下费米气体热容
+	\[\label{FermiGasEnergy}U=\frac 35N\mu(0)+\frac{\pi^2}{4}\frac{N}{\mu(0)}(kT)^2\taghere\]
+	内能\eqref{FermiGasEnergy}右侧第一项为常数，是由于泡利不相容原理带来的内禀能量。第二项正比于$ T^2 $，因此可以得到低温下费米气体热容
 	\[C_V=\parDer UT=\frac{\pi^2}{2}Nk\frac{kT}{\mu(0)}\propto T\taghere\]
+	
+	这里我们不妨从另一个角度重新思考简并费米气体在低温下的性质：为什么低温下内能\eqref{FermiGasEnergy}是一个常数项加一个$ T^2 $项呢？
+	
+	我们知道费米子服从泡利不相容原理。在$ T=0\unit{K} $时没有热涨落，费米子首先填入最低能级，在最低能级占满后填入次低能级，依次填满低能级直到所有费米子都填进某个能级里。这一过程就好像拿着一袋苹果上楼，每上一层楼就在这一层留下两个苹果直到袋子里苹果用完。因此$ T=0\unit{K} $时的费米分布\eqref{FermiDistribution}应该存在某个临界能量$ \mu(0) $, 低于$ \mu(0) $的能级完全填满，而高于$ \mu(0) $的能级完全空着，也就是说
+	\[f^0_{\text{Fermi}}(E)=\begin{cases}
+	1,&E\le\mu(0)\\0,&E>\mu(0)
+	\end{cases}\taghere\]
+	费米能级$ \mu(0) $仍由\eqref{3a}确定:
+	\[N=\int_0^{\mu(0)}g(E)\diff E=\frac{\sqrt{2}m^{\frac 32}V}{\pi^2\hbar^3}\times\frac 23\left(\mu(0)\right)^{\frac 23}\taghere\]
+	即
+	\[\mu(0)=\frac{\hbar^2}{2m}\left(3\pi^2\frac NV\right)^{\frac 23}\tag{\ref{29}$ ' $}\]
+	这时候的费米气体内能
+	\[U=\int_0^{\mu(0)}Eg(E)\diff E=\frac 35N\mu(0)\taghere\]
+	而当$ T>0 $但仍然属于低温范围内的时候，我们可以把费米分布$ f_{\text{Fermi}}(E) $画出来看看是什么样的：
+	
+	\begin{multicols}{2}
+		\noindent\includegraphics[width=\linewidth]{fig3L}
+		\includegraphics[width=\linewidth]{fig3R}
+	\end{multicols}
+
+	上图左侧代表$ T=0\unit{K} $时的费米分布，而右侧代表$ T>0 $，可以看到部分$ \mu(0) $以下的费米子被激发到了$ \mu(0) $以上的能级。但是在低温下这种激发非常微弱，只涉及到了$ \mu(0) $附近能级内的费米子，只有这部分费米子对低温下的气体内能变化以及热容有贡献，因此我们考虑$ \mu(0)\pm2kT $范围内的能级:
+	\begin{align*}
+	U&\approx\int_{\mu(0)-2kT}^{\mu(0)+2kT}Eg(E)\left(f(E)-f^0(E)\right)\diff E\\
+	&\approx\int_{\mu(0)-2kT}^{\mu(0)+2kT}\frac{Eg(E)\diff E}{\ee^{\frac{E-\mu(0)}{kT}}+1}-\int_{\mu(0)-2kT}^{\mu(0)}Eg(E)\diff E\\
+	&\approx \frac{\sqrt{2}m^{\frac 32}V}{\pi^2\hbar^3}kT\left(\int_{0}^{2}\frac{(\mu(0)-kTx)^{\frac 32}\ee^x}{\ee^x+1}\diff x+\int_0^2\frac{(\mu(0)+kTx)^{\frac 32}}{\ee^x+1}\diff x-\int_0^2(\mu(0)-kTx)^{\frac 32}\diff x\right)\\
+	&=\frac{\sqrt{2}m^{\frac 32}V}{\pi^2\hbar^3}kT\int_0^2\frac{(\mu(0)+kTx)^{\frac 32}-(\mu(0)-kTx)^{\frac 32}}{\ee^x+1}\diff x\\
+	&\approx\frac{\sqrt{2}m^{\frac 32}V}{\pi^2\hbar^3}kT(\mu(0))^{\frac 32}\int_0^2\frac{1}{\ee^x+1}\cdot\frac{3kTx}{\mu(0)}\diff x
+	\end{align*}
+	总之
+	\[U=\frac 92\frac{N}{\mu(0)}(kT)^2\int_0^2\frac{x\diff x}{\ee^x+1}\approx1.97\frac{N(kT)^2}{\mu(0)}\taghere\]
+	式\eqref{FermiGasEnergy}给出$ U\approx2.47N(kT)^2/\mu(0) $. 系数算的不太准，但是至少还是得出了内能$ U\propto T^2 $的结论，再一次说明了$ C_V\propto T $.
+	\begin{multicols}{2}
+		金属中的自由电子气就是常见的费米气体。电子热容$ C_V^{\text{electron}} $和晶格热容$ C_V^{\text{lattice}} $对金属的热容均有贡献。固体物理会提到在低温下这两个热容的特点是
+		\[C_V^{\text{electron}}\propto T\,,\quad C_V^{\text{lattice}}\propto T^3\]
+		因此在极低的温度下金属热容主要来源于电子热容。右图展示了一个典型的金属热容实验测量值\footnote{引用自黄昆《固体物理学》\emph{金属电子论}章节}。
+		\begin{Figure}
+			\includegraphics[width=\linewidth]{MetalCapacity}
+		\end{Figure}
+	\end{multicols}
 \end{document}
