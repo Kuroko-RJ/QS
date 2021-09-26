@@ -1,4 +1,4 @@
-# QS
+# QS(更新中)
 
 记录了我个人码的一些TeX源码以及成品文档，放在GitHub上的文档都可以随意转载，如果你愿意注明我的知乎账号 (龍翔九州 - https://www.zhihu.com/people/long-xiang-jiu-zhou-99 )或GitHub账号那自然更好。 在源码里你可能见到的高血压特性包括但不限于：
 
