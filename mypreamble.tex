@@ -1,6 +1,6 @@
 \usepackage[UTF8]{ctex}
 \usepackage[a4paper,scale=.7]{geometry}
-\usepackage{amsmath,amsfonts,mathrsfs,amssymb,ntheorem,extarrows,graphicx,enumerate,braket,mathtools,xcolor,listings,syntonly}
+\usepackage{amsmath,amsfonts,mathrsfs,amssymb,ntheorem,extarrows,graphicx,enumerate,braket,mathtools,xcolor,listings,syntonly,multicol}
 %\usepackage{showlabels}
 
 
@@ -85,6 +85,10 @@
 	\theorembodyfont{\normalfont}
 	\newtheorem{proof}{证:}
 }
+
+\newenvironment{Figure}
+{\par\medskip\noindent\minipage{\linewidth}}
+{\endminipage\par\medskip}
 
 \lstset{
 	basicstyle          =   \sffamily,          % 基本代码风格

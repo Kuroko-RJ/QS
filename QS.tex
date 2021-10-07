@@ -95,6 +95,7 @@
 	\eqref{12'}式也说明当玻色气体致密到平均粒子密度$ N/V $大于某个值时，粒子间平均间距小于粒子的波长，不同粒子的波包相互重叠形成一个大的波包，这些粒子就会凝聚在同一个状态\footnote{在知乎上有讲得更好的定性分析，我写的东西仅供参考（}。
 	%参考https://www.zhihu.com/question/440094636/answer/1685768832
 	%https://www.zhihu.com/question/339890379/answer/880748843
+
 	\section{费米气体}
 	费米气体算起来简单点，至少不用像玻色气体那样分段。首先把\eqref{StatisticalQuantity}式写出来，以自旋1/2的费米子为例，自旋带来的简并度为2:
 	\begin{subequations}\label{24}\begin{align}
@@ -178,12 +179,43 @@
 	总之
 	\[U=\frac 92\frac{N}{\mu(0)}(kT)^2\int_0^2\frac{x\diff x}{\ee^x+1}\approx1.97\frac{N(kT)^2}{\mu(0)}\taghere\]
 	式\eqref{FermiGasEnergy}给出$ U\approx2.47N(kT)^2/\mu(0) $. 系数算的不太准，但是至少还是得出了内能$ U\propto T^2 $的结论，再一次说明了$ C_V\propto T $.
-	\begin{multicols}{2}
-		金属中的自由电子气就是常见的费米气体。电子热容$ C_V^{\text{electron}} $和晶格热容$ C_V^{\text{lattice}} $对金属的热容均有贡献。固体物理会提到在低温下这两个热容的特点是
-		\[C_V^{\text{electron}}\propto T\,,\quad C_V^{\text{lattice}}\propto T^3\]
-		因此在极低的温度下金属热容主要来源于电子热容。右图展示了一个典型的金属热容实验测量值\footnote{引用自黄昆《固体物理学》\emph{金属电子论}章节}。
-		\begin{Figure}
-			\includegraphics[width=\linewidth]{MetalCapacity}
-		\end{Figure}
-	\end{multicols}
+	
+	
+	金属中的自由电子气就是常见的费米气体。电子热容$ C_V^{\text{electron}} $和晶格热容$ C_V^{\text{lattice}} $对金属的热容均有贡献。固体物理会提到在低温下这两个热容的特点是
+	\[C_V^{\text{electron}}\propto T\,,\quad C_V^{\text{lattice}}\propto T^3\]
+	因此在极低的温度下金属热容主要来源于电子热容。下图展示了一个典型的金属热容实验测量值\footnote{引用自黄昆《固体物理学》\emph{金属电子论}章节}。
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=.5\linewidth]{MetalCapacity}
+	\end{figure}
+	
+	在常温下费米气体的简并效应同样被经典性掩盖，式\eqref{24}给出
+	\[\label{38}\frac{U}{NkT}=\frac 32\frac{g_{5/2}(z)}{g_{3/2}(z)}\taghere\]
+	在$ kT\gg\mu(0)  $的时候$ g_\nu(z)\to 0 $. 那么由\eqref{25'}式有
+	\[z\approx g_{\frac 32}(z)=\frac{4}{3\sqrt{\pi}}\left(\frac{\mu(0)}{kT}\right)^{\frac 32}\]
+	$ g_\nu(z)=-h_\nu(-z) $, 在$ 0\le zle 1 $的时候有
+	\[\label{39}g_\nu(z)=\sum_{n=1}^{\infty}\frac{(-1)^{n+1}z^n}{n^\nu}\approx z-\frac{z}{2^\nu}\taghere\]
+	将\eqref{39}式代入\eqref{38}式中有
+	\begin{align*}
+	\frac{U}{NkT}&\approx\frac 32\cdot\frac{1-\dfrac{z}{2^{5/2}}}{1-\dfrac{z}{2^{3/2}}}\approx\frac 32\left(1+\frac{1}{4\sqrt{2}}\times\frac{4}{3\sqrt{\pi}}\left(\frac{\mu(0)}{kT}\right)^{\frac 32}\right)
+	\end{align*}
+	即\[U\approx\frac 32NkT\left(1+\frac{1}{3\sqrt{2\pi}}\left(\frac{\mu(0)}{kT}\right)^{\frac 32}\right)\approx\frac 32NkT\taghere\]
+	\newpage
+	\section{总结}
+	总的来说，玻色气体和费米气体由于量子特性，在低温下进入简并态，并且具有不同的热容特性。
+	
+	对于玻色气体来说，由于玻色子之间的全同性，在低于临界温度$ T_C $的时候会有大量的玻色子被“冻结”在能量为0的基态，数量$ N_{=0} $为
+	\[N_{=0}=N\left(1-\left(\frac{T}{T_C}\right)^2\right)\taghere\]
+	剩下的玻色子处于激发态，为玻色气体提供了内能
+	\[U=\frac{3\zeta(5/2)}{2\zeta(3/2)}NkT\left(\frac{T}{T_C}\right)^{\frac 32}\approx0.770NkT\left(\frac{T}{T_C}\right)^{\frac 32}\taghere\]
+	热容$ C_V\propto T^{3/2} $:
+	\[C_V=\frac{5U}{2T}\approx1.925Nk\left(\frac{T}{T_C}\right)^{\frac 32}\taghere\]
+	
+	对于费米气体来说，由于泡利不相容原理，在$ T=0 $时费米子必须依次填满能量较低的能级，直到费米能级$ \mu(0) $为止。低温$ T>0 $时只有费米能级$ \mu(0) $附近的费米子能被激发。低温费米气体有内能
+	\[U=\frac 35N\mu(0)+\frac{\pi^2}{4}\frac{N}{\mu(0)}(kT)^2\taghere\]
+	上式第一项代表了$ T=0 $时能级范围$ 0 $至$ \mu(0) $上所有态均被填满具有的内能，第二项代表能量接近$ \mu(0) $的费米子被激发所带来的内能。对应费米气体的低温热容$ C_V\propto T $:
+	\[C_V=\frac{\pi^2}{2}\frac{kT}{\mu(0)}Nk\taghere\]
+	
+	而在常温下玻色气体和费米气体共同退化至经典情形
+	\[U\approx\frac 32NkT\,,\,C_V\approx\frac 32Nk\taghere\]
 \end{document}
